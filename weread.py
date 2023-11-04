@@ -62,7 +62,6 @@ def get_bookinfo(bookId):
     r = session.get(WEREAD_BOOK_INFO, params=params)
     isbn = ""
     print(f"获取书详情时，返回状态码为:{r.status_code}")
-    newRating = 0
     if r.ok:
         data = r.json()
         isbn = data["isbn"]
