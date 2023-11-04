@@ -60,6 +60,8 @@ def get_bookinfo(bookId):
     params = dict(bookId=bookId)
     r = session.get(WEREAD_BOOK_INFO, params=params)
     isbn = ""
+    statusCode=e.status_code
+    print(statusCode)
     if r.ok:
         data = r.json()
         isbn = data["isbn"]
