@@ -11,6 +11,7 @@ from requests.utils import cookiejar_from_dict
 from http.cookies import SimpleCookie
 from datetime import datetime
 import hashlib
+import sys
 
 WEREAD_URL = "https://weread.qq.com/"
 WEREAD_NOTEBOOKS_URL = "https://i.weread.qq.com/user/notebooks"
