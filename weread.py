@@ -75,10 +75,16 @@ def get_review_list(bookId):
     params = dict(bookId=bookId, listType=11, mine=1, syncKey=0)
     r = session.get(WEREAD_REVIEW_LIST_URL, params=params)
     reviews = r.json().get("reviews")
+    
+    # Check if reviews is None right after fetching it
+    if reviews is None:
+        return "", ""  # If reviews is None, return empty values
+
     summary = list(filter(lambda x: x.get("review").get("type") == 4, reviews))
     reviews = list(filter(lambda x: x.get("review").get("type") == 1, reviews))
     reviews = list(map(lambda x: x.get("review"), reviews))
     reviews = list(map(lambda x: {**x, "markText": x.pop("content")}, reviews))
+   
     return summary, reviews
 
 
